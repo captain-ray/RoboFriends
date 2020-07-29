@@ -1,5 +1,6 @@
 import React from 'react';
 
+//pure component
 const Card = ({id,name,email}) => {
     return (
         <div className="tc bg-light-green dib br3 ma2 pa3 grow shadow-5">
