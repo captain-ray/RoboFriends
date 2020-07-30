@@ -9,6 +9,10 @@
 
 ------
 
+#### Version7:
+
+- apply Redux
+
 #### Version6:
 
 - clean file structure
