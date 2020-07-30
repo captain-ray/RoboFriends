@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
+import { setSearchField, requestRobots } from '../store/actions';
+
 import './App.css';
 import CardList from '../components/CardList';
 import SearchBox from '../components/SearchBox';
@@ -6,45 +9,45 @@ import Scroll from '../components/Scroll';
 import ErrorBoundry from '../components/ErrorBoundary';
 
 class App extends Component {
-    constructor() {
-        super();
-        this.state = {
-            robots: [],
-            searchText: "",
-        }
-    }
-
-    onSearchChange = (event) => {
-        this.setState({
-            searchText: event.target.value
-        })
-    }
 
     componentDidMount() {
-        fetch("https://jsonplaceholder.typicode.com/users")
-            .then(res => res.json())
-            .then(users => this.setState({ robots: users }))
+        this.props.onRequestRobots();
     }
 
     render() {
-        const filteredRobots = this.state.robots.filter(robot => robot.name.toLowerCase().includes(this.state.searchText.toLowerCase()))
+        const { robots, searchField, onSearchChange, isPending } = this.props;
+        const filteredRobots = robots.filter(robot => robot.name.toLowerCase().includes(searchField.toLowerCase()))
 
-        if (this.state.robots.length === 0) {
-            return <h1>Loading</h1>
-        } else {
-            return (
-                <div className="tc">
-                    <h1>RoboFriends</h1>
-                    <SearchBox searchText={this.state.searchText} searchChange={this.onSearchChange} />
-                    <Scroll>
+
+        return (
+            <div className="tc">
+                <h1>RoboFriends</h1>
+                <SearchBox searchChange={onSearchChange} />
+                <Scroll>
+                    {isPending ? <h1>Loading...</h1> :
                         <ErrorBoundry>
                             <CardList robots={filteredRobots} />
                         </ErrorBoundry>
-                    </Scroll>
-                </div>
-            )
-        }
+                    }
+                </Scroll>
+            </div>
+        )
+
     }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+    return {
+        searchField: state.searchRobots.searchField,
+        robots: state.requestRobots.robots,
+        isPending: state.requestRobots.isPending
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
+        onRequestRobots: () => dispatch(requestRobots())
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(App);
