@@ -9,6 +9,11 @@
 
 ------
 
+#### Version6:
+
+- clean file structure
+- add Error Boundry component
+
 #### Version5:
 
 - reusable "Scroll Window" Component

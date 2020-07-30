@@ -3,7 +3,7 @@ import './App.css';
 import CardList from '../components/CardList';
 import SearchBox from '../components/SearchBox';
 import Scroll from '../components/Scroll';
-import ErrorBoundry from '../components/ErrorBoundry';
+import ErrorBoundry from '../components/ErrorBoundary';
 
 class App extends Component {
     constructor() {
