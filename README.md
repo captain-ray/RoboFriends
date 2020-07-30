@@ -9,6 +9,13 @@
 
 ------
 
+#### Version3:
+
+- add gradient background
+- add cool sega fonts
+
+![3](demo_images/3.png)
+
 #### Version2:
 
 - CardList
