@@ -3,6 +3,11 @@ import Card from './Card';
 
 //pure component
 const CardList = ({ robots }) => {
+
+    // if(true){
+    //     return new Error("something goes wrong!");
+    // }
+
     return (
         robots.map(robot =>
             <Card
