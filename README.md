@@ -11,7 +11,7 @@
 
 #### Version5:
 
-- reusable "Scroll" Component
+- reusable "Scroll Window" Component
 
   ![5](demo_images/5.png)
 
