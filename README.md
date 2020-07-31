@@ -9,6 +9,14 @@
 
 ------
 
+#### Version8:
+
+- add testing
+  - Jest, Enzyme
+    - unit testing
+    - stateless component testing
+    - stateful component testing
+
 #### Version7:
 
 - apply Redux
