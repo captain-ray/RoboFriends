@@ -2,6 +2,7 @@
 
 ### Tech Stack
 
+- React + Redux
 - tachyons
 - RoboHash - API
 
